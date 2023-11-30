@@ -1,22 +1,42 @@
 import React from 'react';
 import s from './Dialogs.module.css'
 import {NavLink} from 'react-router-dom';
-import * as timers from 'timers';
 
 
 export const Dialogs = () => {
+
+    let dialogsData = [
+        {id: 1, name: 'Pasha'},
+        {id: 2, name: 'Nick'},
+        {id: 3, name: 'Nina'},
+        {id: 4, name: 'Denis'},
+    ]
+
+    let messagesData = [
+        {id: 1, message: 'Hi'},
+        {id: 2, message: 'How is you Ok?'},
+        {id: 3, message: 'Nice!'},
+    ]
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                <DialogItem name={'Pasha'} id={1}/>
-                <DialogItem name={'Nick'} id={2}/>
-                <DialogItem name={'Nina'} id={3}/>
-                <DialogItem name={'Denis'} id={4}/>
+                {
+                    dialogsData.map(el => {
+                        return (
+                            <DialogItem key={el.id} name={el.name} id={el.id}/>
+                        )
+                    })
+                }
             </div>
             <div className={s.messages}>
-                <Message message={'Hi'}/>
-                <Message message={'How is you Ok?'}/>
-                <Message message={'Nice!'}/>
+                {
+                    messagesData.map(el => {
+                        return (
+                            <Message message={el.message} key={el.id}/>
+                        )
+                    })
+                }
             </div>
         </div>
     );
