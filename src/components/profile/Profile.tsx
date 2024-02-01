@@ -1,13 +1,17 @@
 import React from 'react';
-import s from './Profile.module.css'
 import {MyPosts} from './myPosts/MyPosts';
 import {ProfileInfo} from './myPosts/profileInfo/ProfileInfo';
+import {PostType} from '../../redux/state';
 
-export const Profile = () => {
+type ProfileType = {
+    posts: PostType[]
+}
+
+export const Profile: React.FC<ProfileType> = ({posts}) => {
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts/>
+            <MyPosts posts={posts}/>
         </div>
     );
 };
