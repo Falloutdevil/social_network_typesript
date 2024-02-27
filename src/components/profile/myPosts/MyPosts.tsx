@@ -20,6 +20,7 @@ export const MyPosts: React.FC<MyPostsType> = ({posts, addPost}) => {
     const addPostHandler = () => {
         if (newPostElement.current) {
             addPost(newPostElement.current.value)
+            newPostElement.current.value = '';
         }
     }
 
