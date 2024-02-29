@@ -11,6 +11,7 @@ import {addPost} from './redux/state';
 function App() {
     let posts = state.profilePage.posts;
     let dialogs = state.dialogsPage.dialogs;
+    const message = state.profilePage.newPostText;
     let messages = state.dialogsPage.messages;
 
     return (
@@ -19,7 +20,7 @@ function App() {
                 <Header/>
                 <Navbar/>
                 <div className="app-wrapper-content">
-                    <Route path="/profile" render={() => <Profile posts={posts} addPost={addPost}/>}/>
+                    <Route path="/profile" render={() => <Profile posts={posts} addPost={addPost} message={message}/>}/>
                     <Route path="/dialogs" render={() => <Dialogs dialogs={dialogs} messages={messages}/>}/>
                 </div>
             </BrowserRouter>
