@@ -1,5 +1,3 @@
-import {rerenderEntireTree} from '../rerenderEntireTree';
-
 export type PostType = {
     id: number
     message: string
@@ -29,6 +27,10 @@ export type DialogPageType = {
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogPageType
+}
+
+let rerenderEntireTree = () => {
+    console.log('state is changed')
 }
 
 
@@ -64,11 +66,16 @@ export const addPost = () => {
     }
     state.profilePage.posts.push(newPost);
     state.profilePage.newPostText = ''
-    rerenderEntireTree(state);
+    rerenderEntireTree();
 }
 
 export const updateNewPostText = (newText: string) => {
   state.profilePage.newPostText = newText;
-    rerenderEntireTree(state);
+    rerenderEntireTree();
 }
+
+export const subscribe = (observer: () => void) => {
+    rerenderEntireTree = observer;
+}
+
 export default state
